@@ -3,22 +3,14 @@
 </head>
 
 <body>
-	<div class="toolbar">
-		<div class="title">Help Button</div>
-
-		<div id="nav-icon">
-		</div>
-	</div>
+	<h1>Welcome to Meteor!</h1>
 
 	{{> loginButtons}}
 
 	{{#if currentUser}}
+		{{> button}}
 
-		<section class="home">
-			{{> button}}
-		</section>
-
-		<section class="settings hide">
+		<section class="settings">
 			<div id="existingContacts">
 				{{#each contacts}}
 					{{> contactForm}}
@@ -44,8 +36,14 @@
 		<h5 for="">Contact Name</h5>
 		<input type="text" name="name" placeholder="Contact Name" value="{{name}}" />
 
+		<h5 for="">Send to Email</h5>
+		<input type="checkbox" name="sendToEmail" checked="{{sendToEmail}}" />
+
 		<h5 for="">Email Address</h5>
 		<input type="text" name="email" placeholder="Email Address" value="{{email}}" />
+
+		<h5 for="">Send to Text</h5>
+		<input type="checkbox" name="sendToText" checked="{{sendToText}}" />
 
 		<h5 for="">Mobile Phone Number</h5>
 		<input type="text" name="phone" placeholder="Mobile Phone Number" value="{{phone}}" />
