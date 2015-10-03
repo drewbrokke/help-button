@@ -33,6 +33,9 @@
 
 <template name="contactForm">
 	<form class="{{#unless _id}}new-contact{{/unless}}">
+		<h5 for="">Contact Enabled</h5>
+		<input type="checkbox" name="contactEnabled" checked="{{contactEnabled}}" />
+
 		<h5 for="">Contact Name</h5>
 		<input type="text" name="name" placeholder="Contact Name" value="{{name}}" />
 

@@ -24,6 +24,7 @@ var utilityFns = {
 
 		return {
 			data: {
+				contactEnabled: formTarget.contactEnabled.checked,
 				contactInfoId: formTarget.contactId.value,
 				email: formTarget.email.value,
 				name: name,
