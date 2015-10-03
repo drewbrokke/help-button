@@ -9,18 +9,23 @@ Template.body.helpers({
 
 Template.button.events({
 	'click button': function () {
-		Meteor.call('sendEmail');
+		var contacts = Contacts.find({});
+
+		contacts.forEach(function(contact) {
+
+			// if email && sendToEmail
+				Meteor.call('sendEmail', contact.email, 'helpbuttondemo@gmail.com', 'help please', 'This is the new stuff');
+
+			// if phoneNumber && sendToText
+				var phoneAddress = Utils.createPhoneEmail(contact.phone, contact.provider);
+
+				Meteor.call('sendEmail', phoneAddress, 'helpbuttondemo@gmail.com', 'help please', 'This is the new stuff');
+		});
 	}
 });
 
 Accounts.ui.config({
 	passwordSignupFields: 'USERNAME_AND_EMAIL'
-});
-
-Template.button.events({
-	'click button': function () {
-		Meteor.call('sendEmail');
-	}
 });
 
 Template.deleteContact.events({

@@ -3,7 +3,18 @@ var REGEX_PHONE = /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/i;
 
 var CSS_WARNING = 'warning';
 
+var CARRIERS = [
+	"txt.att.net", // att
+	"messaging.sprintpcs.com", // sprint
+	"tmomail.net", // tMobile
+	"vtext.com.nextel.com" // verizon
+]
+
 var utilityFns = {
+	createPhoneEmail: function(phoneNumber, provider) {
+		return phoneNumber + '@' + CARRIERS[provider];
+	},
+
 	getFormdata: function(formTarget) {
 		var instance = this;
 
