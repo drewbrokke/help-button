@@ -12,5 +12,5 @@ Meteor.startup(function () {
 });
 
 Meteor.publish("contacts", function () {
-	return Contacts.find({});
+	return Contacts.find({userId: this.userId});
 });

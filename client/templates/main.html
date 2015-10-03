@@ -1,5 +1,5 @@
 <head>
-  <title>Help Button</title>
+	<title>Help Button</title>
 </head>
 
 <body>
@@ -11,36 +11,65 @@
 		{{> button}}
 
 		<section class="settings">
-			{{#each contacts}}
-				{{> contactForm}}
-			{{/each}}
+			<div id="existingContacts">
+				{{#each contacts}}
+					{{> contactForm}}
+				{{/each}}
+			</div>
 
-			<a class="add-more">Add More Contacts</a>
+			<div id="addAdditionalContact">
+				<h3 for="">Add New</h3>
+				{{>contactForm}}
+
+			</div>
+
 		</section>
 	{{/if}}
 </body>
 
 <template name="button">
-  <button>Help!</button>
+	<button>Help!</button>
 </template>
 
 <template name="contactForm">
-	<form class="{{name}}-form">
-		<label for="">Contact Name</label>
-		<input type="text" name="contactName" placeholder="Contact Name" value="{{name}}" />
+	<form class="{{#unless _id}}new-contact{{/unless}}">
+		<h5 for="">Contact Name</h5>
+		<input type="text" name="name" placeholder="Contact Name" value="{{name}}" />
 
-		<label for="">Email Address</label>
-		<input type="text" name="emailAddress" placeholder="Email Address" value="{{email}}" />
+		<h5 for="">Email Address</h5>
+		<input type="text" name="email" placeholder="Email Address" value="{{email}}" />
 
-		<label for="">Mobile Phone Number</label>
-		<input type="text" name="phoneNumber" placeholder="Mobile Phone Number" value="{{phone}}" />
+		<h5 for="">Mobile Phone Number</h5>
+		<input type="text" name="phone" placeholder="Mobile Phone Number" value="{{phone}}" />
 
-		<label for="">Mobile Phone Provider</label>
-		<select name="phoneProvider">
-			<option>AT&T</option>
-			<option>Sprint</option>
-			<option>T-Mobile</option>
-			<option>Verizon</option>
+		<h5 for="">Mobile Phone Provider</h5>
+		<select name="provider">
+			<option selected="{{providerIs 0}}" value="0">AT&T</option>
+			<option selected="{{providerIs 1}}" value="1">Sprint</option>
+			<option selected="{{providerIs 2}}" value="2">T-Mobile</option>
+			<option selected="{{providerIs 3}}" value="3">Verizon</option>
 		</select>
+
+		<input type="hidden" name="contactId" value="{{_id}}" />
+
+		<div>
+			<button type="submit">
+				{{#unless _id}}
+					Add Contact
+				{{else}}
+					Update Contact
+				{{/unless}}
+			</button>
+		</div>
+
+		{{#if _id}}
+			<div>
+				{{> deleteContact}}
+			</div>
+		{{/if}}
 	</form>
+</template>
+
+<template name="deleteContact">
+	<button data-id="{{_id}}">Remove Contact</button>
 </template>
