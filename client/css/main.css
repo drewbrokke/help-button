@@ -1,12 +1,91 @@
-.hide {
-	display: none;
+body {
+	margin: 0;
+}
+
+.toolbar {
+	align-items: center;
+	background: #EEE;
+	display: flex;
+	height: 60px;
+}
+
+.toolbar .title {
+	flex-grow: 1;
+	text-align: center;
+}
+
+.content {
+	padding: 8px;
 }
 
 form {
-	border: 1px solid #000;
 	width: 600px;
 }
 
 form input.warning {
 	border: 1px solid red;
+}
+
+#settings {
+	border-top: 1px solid black;
+	border-left: 1px solid black;
+	height: 100%;
+	padding: 20px;
+	position: absolute;
+	right: -1000px;
+	top: 60px;
+	transition: all 250ms ease-in-out;
+}
+
+#settings.open {
+	background: white;
+	right: 0;
+}
+
+
+/*---------------- Nav Toggle ----------------*/
+
+#nav-toggle {
+	cursor: pointer;
+	margin-right: 24px;
+	padding: 10px 35px 16px 0px;
+}
+
+#nav-toggle span, #nav-toggle span:before, #nav-toggle span:after {
+	cursor: pointer;
+	border-radius: 1px;
+	height: 5px;
+	width: 35px;
+	background: black;
+	position: absolute;
+	display: block;
+	content: '';
+}
+
+#nav-toggle span:before {
+	top: -10px;
+}
+
+#nav-toggle span:after {
+	bottom: -10px;
+}
+
+#nav-toggle span, #nav-toggle span:before, #nav-toggle span:after {
+	transition: all 250ms ease-in-out;
+}
+
+#nav-toggle.active span {
+	background-color: transparent;
+}
+
+#nav-toggle.active span:before, #nav-toggle.active span:after {
+	top: 0;
+}
+
+#nav-toggle.active span:before {
+	transform: rotate(45deg);
+}
+
+#nav-toggle.active span:after {
+	transform: rotate(-45deg);
 }

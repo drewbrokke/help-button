@@ -74,3 +74,12 @@ Template.contactForm.events({
 		}
 	}
 });
+
+
+Template.body.events({
+	'click #nav-toggle': function(event) {
+		$(event.currentTarget).toggleClass('active');
+
+		$('#settings').toggleClass('open');
+	}
+});

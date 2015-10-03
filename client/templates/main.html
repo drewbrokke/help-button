@@ -3,28 +3,38 @@
 </head>
 
 <body>
-	<h1>Welcome to Meteor!</h1>
+	<div class="toolbar">
+		<div class="title">Help Button</div>
 
-	{{> loginButtons}}
 
-	{{#if currentUser}}
-		{{> button}}
+		<div id="nav-toggle">
+			<span></span>
+		</div>
+	</div>
 
-		<section class="settings">
-			<div id="existingContacts">
-				{{#each contacts}}
-					{{> contactForm}}
-				{{/each}}
-			</div>
+	<div class="content">
+		{{> loginButtons}}
 
-			<div id="addAdditionalContact">
-				<h3 for="">Add New</h3>
-				{{>contactForm}}
+		{{#if currentUser}}
 
-			</div>
+			<section id="home">
+				{{> button}}
+			</section>
 
-		</section>
-	{{/if}}
+			<section id="settings">
+				<div id="existingContacts">
+					{{#each contacts}}
+						{{> contactForm}}
+					{{/each}}
+				</div>
+
+				<div id="addAdditionalContact">
+					<h3 for="">Add New</h3>
+					{{>contactForm}}
+				</div>
+			</section>
+		{{/if}}
+	</div>
 </body>
 
 <template name="button">
