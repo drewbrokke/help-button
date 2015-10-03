@@ -3,17 +3,21 @@
 </head>
 
 <body>
-  <h1>Welcome to Meteor!</h1>
+	<h1>Welcome to Meteor!</h1>
 
-  {{> button}}
+	{{> loginButtons}}
 
-	<section class="settings">
-		{{#each contacts}}
-			{{> contactForm}}
-		{{/each}}
+	{{#if currentUser}}
+		{{> button}}
 
-		<a class="add-more">Add More Contacts</a>
-	</section>
+		<section class="settings">
+			{{#each contacts}}
+				{{> contactForm}}
+			{{/each}}
+
+			<a class="add-more">Add More Contacts</a>
+		</section>
+	{{/if}}
 </body>
 
 <template name="button">
