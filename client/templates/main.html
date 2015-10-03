@@ -6,8 +6,37 @@
   <h1>Welcome to Meteor!</h1>
 
   {{> button}}
+
+	<section class="settings">
+		{{#each contacts}}
+			{{> contactForm}}
+		{{/each}}
+
+		<a class="add-more">Add More Contacts</a>
+	</section>
 </body>
 
 <template name="button">
   <button>Help!</button>
+</template>
+
+<template name="contactForm">
+	<form class="{{name}}-form">
+		<label for="">Contact Name</label>
+		<input type="text" name="contactName" placeholder="Contact Name" value="{{name}}" />
+
+		<label for="">Email Address</label>
+		<input type="text" name="emailAddress" placeholder="Email Address" value="{{email}}" />
+
+		<label for="">Mobile Phone Number</label>
+		<input type="text" name="phoneNumber" placeholder="Mobile Phone Number" value="{{phone}}" />
+
+		<label for="">Mobile Phone Provider</label>
+		<select name="phoneProvider">
+			<option>AT&T</option>
+			<option>Sprint</option>
+			<option>T-Mobile</option>
+			<option>Verizon</option>
+		</select>
+	</form>
 </template>
