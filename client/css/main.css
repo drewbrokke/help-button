@@ -2,3 +2,7 @@ form {
 	border: 1px solid #000;
 	width: 600px;
 }
+
+form input.warning {
+	border: 1px solid red;
+}

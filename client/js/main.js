@@ -47,20 +47,22 @@ Template.contactForm.events({
 		event.preventDefault();
 
 		var formTarget = event.target;
-		var formData = Utils.getFormdata(formTarget);
+		var form = Utils.getFormdata(formTarget);
 
-		var method = 'updateContact';
-		var callback = null;
+		if (form.validation) {
+			var method = 'updateContact';
+			var callback = null;
 
-		var newContact = $(formTarget).hasClass('new-contact');
+			var newContact = $(formTarget).hasClass('new-contact');
 
-		if (newContact) {
-			method = 'addContact';
-			callback = function() {
-				formTarget.reset();
-			};
+			if (newContact) {
+				method = 'addContact';
+				callback = function() {
+					formTarget.reset();
+				};
+			}
+
+			Meteor.call(method, form.data, callback);
 		}
-
-		Meteor.call(method, formData, callback);
 	}
 });
