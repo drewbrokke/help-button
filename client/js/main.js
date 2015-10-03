@@ -12,14 +12,15 @@ Template.button.events({
 		var contacts = Contacts.find({});
 
 		contacts.forEach(function(contact) {
-
-			// if email && sendToEmail
+			if (contact.email && contact.sendToEmail) {
 				Meteor.call('sendEmail', contact.email, 'helpbuttondemo@gmail.com', 'help please', 'This is the new stuff');
+			}
 
-			// if phoneNumber && sendToText
+			if (contact.phone && contact.sendToText) {
 				var phoneAddress = Utils.createPhoneEmail(contact.phone, contact.provider);
 
 				Meteor.call('sendEmail', phoneAddress, 'helpbuttondemo@gmail.com', 'help please', 'This is the new stuff');
+			}
 		});
 	}
 });
@@ -66,6 +67,8 @@ Template.contactForm.events({
 					formTarget.reset();
 				};
 			}
+
+			console.log('form.data: ', form.data);
 
 			Meteor.call(method, form.data, callback);
 		}

@@ -28,7 +28,9 @@ var utilityFns = {
 				email: formTarget.email.value,
 				name: name,
 				phone: formTarget.phone.value,
-				provider: formTarget.provider.value
+				provider: formTarget.provider.value,
+				sendToEmail: formTarget.sendToEmail.checked,
+				sendToText: formTarget.sendToText.checked
 			},
 			validation: name && email && phone
 		};
