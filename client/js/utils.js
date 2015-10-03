@@ -45,7 +45,7 @@ var utilityFns = {
 		else {
 			$(input).removeClass(CSS_WARNING);
 
-			retVal =  email;
+			retVal =  email || true;
 		}
 
 		return retVal;
@@ -79,7 +79,7 @@ var utilityFns = {
 		else {
 			$(input).removeClass(CSS_WARNING);
 
-			retVal =  phone;
+			retVal = phone || true;
 		}
 
 		return retVal;
