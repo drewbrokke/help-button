@@ -101,6 +101,7 @@ form {
 }
 
 #messageSettings {
+	border-bottom: 1px solid #B6B6B6;
 	padding-top: 60px;
 }
 
@@ -126,14 +127,9 @@ form {
 	text-decoration: none;
 }
 
-.accordion-toggle:focus {
+.accordion-toggle:focus, .accordion-toggle.collapsed:focus {
 	color: #000;
 	text-decoration: none;
-}
-
-.accordion-toggle.collapsed:focus {
-	text-decoration: none;
-	color: #FFF;
 }
 
 #settings.open {
