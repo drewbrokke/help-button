@@ -8,6 +8,7 @@ body {
 	align-items: center;
 	justify-content: space-between;
 	background: #00796B;
+	border-bottom: 1px solid #B6B6B6;
 	position: absolute;
 	display: flex;
 	height: 60px;
@@ -55,6 +56,7 @@ form {
 
 #settings {
 	background: #00796B;
+	border-left: 1px solid #B6B6B6;
 	height: 100%;
 	overflow-y: auto;
 	overflow-x: hidden;
