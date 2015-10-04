@@ -82,50 +82,79 @@
 		<div id="collapse{{_id}}" class="accordion-body collapse">
 			<div class="accordion-inner">
 
-				<form class="{{#unless _id}}new-contact{{/unless}}">
-					<h5 for="">Contact Enabled</h5>
-					<input type="checkbox" name="contactEnabled" checked="{{contactEnabled}}" />
+				{{#unless _id}}
+					<h3>Create New Contact</h3>
+				{{/unless}}
 
-					<h5 for="">Contact Name</h5>
-					<input type="text" name="name" placeholder="Contact Name" value="{{name}}" />
+				<form class="{{#unless _id}}new-contact{{/unless}} form-horizontal">
+					<div class="form-group col-sm-10">
+						<label class="checkbox-inline">
+							<input type="checkbox" name="contactEnabled" value="{{contactEnabled}}">
+							Active Contact
+						</label>
+					</div>
 
-					<h5 for="">Send to Email</h5>
-					<input type="checkbox" name="sendToEmail" checked="{{sendToEmail}}" />
+					<div class="form-group col-sm-10">
+						<label class="checkbox-inline">
+							<input type="checkbox" name="sendToEmail" value="{{sendToEmail}}">
+							Send to Email
+						</label>
+					</div>
 
-					<h5 for="">Email Address</h5>
-					<input type="text" name="email" placeholder="Email Address" value="{{email}}" />
+					<div class="form-group col-sm-10">
+						<label class="checkbox-inline">
+							<input type="checkbox" name="sendToText" value="{{sendToText}}">
+							Send to Text
+						</label>
+					</div>
 
-					<h5 for="">Send to Text</h5>
-					<input type="checkbox" name="sendToText" checked="{{sendToText}}" />
+					<div class="form-group col-sm-10">
+						<div class="controls">
+							<label class="control-label">Name</label>
+							<input class="form-control" type="text" name="name" placeholder="Contact's  Name" value="{{name}}" />
+						</div>
+					</div>
 
-					<h5 for="">Mobile Phone Number</h5>
-					<input type="text" name="phone" placeholder="Mobile Phone Number" value="{{phone}}" />
+					<div class="form-group col-sm-10">
+						<div class="controls">
+							<label class="control-label">Email</label>
+							<input class="form-control" type="text" name="email" placeholder="Contact's  Email Address" value="{{email}}" />
+						</div>
+					</div>
 
-					<h5 for="">Mobile Phone Provider</h5>
-					<select name="provider">
-						<option selected="{{providerIs 0}}" value="0">AT&T</option>
-						<option selected="{{providerIs 1}}" value="1">Sprint</option>
-						<option selected="{{providerIs 2}}" value="2">T-Mobile</option>
-						<option selected="{{providerIs 3}}" value="3">Verizon</option>
-					</select>
+					<div class="form-group col-sm-10">
+						<div class="controls">
+							<label class="control-label">Phone Number</label>
+							<input class="form-control" type="text" name="phone" placeholder="Contact's Phone Number" value="{{phone}}" />
+						</div>
+					</div>
+
+					<div class="form-group col-sm-10">
+						<label class="control-label">Phone Provider</label>
+
+						<select class="form-control" name="provider">
+							<option selected="{{providerIs 0}}" value="0">AT&T</option>
+							<option selected="{{providerIs 1}}" value="1">Sprint</option>
+							<option selected="{{providerIs 2}}" value="2">T-Mobile</option>
+							<option selected="{{providerIs 3}}" value="3">Verizon</option>
+						</select>
+					</div>
 
 					<input type="hidden" name="contactId" value="{{_id}}" />
 
-					<div>
-						<button type="submit">
+					<div class="form-actions">
+						<button type="submit" class="btn btn-primary">
 							{{#unless _id}}
 								Add Contact
 							{{else}}
 								Update Contact
 							{{/unless}}
 						</button>
-					</div>
 
-					{{#if _id}}
-						<div>
+						{{#if _id}}
 							{{> deleteContact}}
-						</div>
-					{{/if}}
+						{{/if}}
+					</div>
 				</form>
 			</div>
 		</div>
@@ -133,5 +162,5 @@
 </template>
 
 <template name="deleteContact">
-	<button data-id="{{_id}}">Remove Contact</button>
+	<button class="btn btn-danger" data-id="{{_id}}">Remove Contact</button>
 </template>

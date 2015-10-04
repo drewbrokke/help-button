@@ -1,7 +1,7 @@
 var REGEX_EMAIL = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
 var REGEX_PHONE = /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/i;
 
-var CSS_WARNING = 'warning';
+var CSS_HAS_ERROR = 'has-error';
 
 var CARRIERS = [
 	"txt.att.net", // att
@@ -24,14 +24,14 @@ var utilityFns = {
 
 		return {
 			data: {
-				contactEnabled: formTarget.contactEnabled.checked,
+				contactEnabled: formTarget.contactEnabled.value,
 				contactInfoId: formTarget.contactId.value,
 				email: formTarget.email.value,
 				name: name,
 				phone: formTarget.phone.value,
 				provider: formTarget.provider.value,
-				sendToEmail: formTarget.sendToEmail.checked,
-				sendToText: formTarget.sendToText.checked
+				sendToEmail: formTarget.sendToEmail.value,
+				sendToText: formTarget.sendToText.value
 			},
 			validation: name && email && phone
 		};
@@ -42,11 +42,13 @@ var utilityFns = {
 
 		var retVal = false;
 
+		var controlGroup = $(input).closest('.form-group');
+
 		if (email.length && !REGEX_EMAIL.test(email)) {
-			$(input).addClass(CSS_WARNING);
+			controlGroup.addClass(CSS_HAS_ERROR);
 		}
 		else {
-			$(input).removeClass(CSS_WARNING);
+			controlGroup.removeClass(CSS_HAS_ERROR);
 
 			retVal =  email || true;
 		}
@@ -59,11 +61,13 @@ var utilityFns = {
 
 		var retVal = false;
 
+		var controlGroup = $(input).closest('.form-group');
+
 		if (!name.length) {
-			$(input).addClass(CSS_WARNING);
+			controlGroup.addClass(CSS_HAS_ERROR);
 		}
 		else {
-			$(input).removeClass(CSS_WARNING);
+			controlGroup.removeClass(CSS_HAS_ERROR);
 
 			retVal = name;
 		}
@@ -76,11 +80,13 @@ var utilityFns = {
 
 		var retVal = false;
 
+		var controlGroup = $(input).closest('.form-group');
+
 		if (phone.length && !REGEX_PHONE.test(phone)) {
-			$(input).addClass(CSS_WARNING);
+			controlGroup.addClass(CSS_HAS_ERROR);
 		}
 		else {
-			$(input).removeClass(CSS_WARNING);
+			controlGroup.removeClass(CSS_HAS_ERROR);
 
 			retVal = phone || true;
 		}
