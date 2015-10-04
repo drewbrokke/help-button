@@ -22,16 +22,21 @@ Template.messageForm.helpers({
 var sendMail = function() {
 	var contacts = Contacts.find({});
 
+	var config = Configs.findOne();
+
+	console.log('config.messageSubject: ', config.messageSubject);
+	console.log('config.messageBody: ', config.messageBody);
+
 	contacts.forEach(function(contact) {
 		if (contact.contactEnabled) {
 			if (contact.email && contact.sendToEmail) {
-				Meteor.call('sendEmail', contact.email, 'helpbuttondemo@gmail.com', 'help please', 'This is the new stuff');
+				Meteor.call('sendEmail', contact.email, 'helpbuttondemo@gmail.com', config.messageSubject, config.messageBody);
 			}
 
 			if (contact.phone && contact.sendToText) {
 				var phoneAddress = Utils.createPhoneEmail(contact.phone, contact.provider);
 
-				Meteor.call('sendEmail', phoneAddress, 'helpbuttondemo@gmail.com', 'help please', 'This is the new stuff');
+				Meteor.call('sendEmail', phoneAddress, 'helpbuttondemo@gmail.com', config.messageSubject, config.messageBody);
 			}
 		}
 	});
