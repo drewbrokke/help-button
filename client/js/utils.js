@@ -24,14 +24,14 @@ var utilityFns = {
 
 		return {
 			data: {
-				contactEnabled: formTarget.contactEnabled.value,
+				contactEnabled: formTarget.contactEnabled.checked,
 				contactInfoId: formTarget.contactId.value,
 				email: formTarget.email.value,
 				name: name,
 				phone: formTarget.phone.value,
 				provider: formTarget.provider.value,
-				sendToEmail: formTarget.sendToEmail.value,
-				sendToText: formTarget.sendToText.value
+				sendToEmail: formTarget.sendToEmail.checked,
+				sendToText: formTarget.sendToText.checked
 			},
 			validation: name && email && phone
 		};
