@@ -4,8 +4,11 @@
 
 <body>
 	<div class="toolbar">
-		<div class="title">Help Button</div>
+		<div id="user-login">
+			{{> loginButtons}}
+		</div>
 
+		<div class="title">Help Button</div>
 
 		<div id="nav-toggle">
 			<span></span>
@@ -13,7 +16,6 @@
 	</div>
 
 	<div class="content">
-		{{> loginButtons}}
 
 		{{#if currentUser}}
 
@@ -23,14 +25,13 @@
 
 			<section id="settings">
 				<div id="existingContacts">
+					<div class="accordion" id="accordion2">
 					{{#each contacts}}
 						{{> contactForm}}
 					{{/each}}
-				</div>
 
-				<div id="addAdditionalContact">
-					<h3 for="">Add New</h3>
 					{{>contactForm}}
+					</div>
 				</div>
 			</section>
 		{{/if}}
@@ -38,55 +39,72 @@
 </body>
 
 <template name="button">
-	<button>Help!</button>
+	<button class="btn btn-danger">Help!</button>
 </template>
 
 <template name="contactForm">
-	<form class="{{#unless _id}}new-contact{{/unless}}">
-		<h5 for="">Contact Enabled</h5>
-		<input type="checkbox" name="contactEnabled" checked="{{contactEnabled}}" />
-
-		<h5 for="">Contact Name</h5>
-		<input type="text" name="name" placeholder="Contact Name" value="{{name}}" />
-
-		<h5 for="">Send to Email</h5>
-		<input type="checkbox" name="sendToEmail" checked="{{sendToEmail}}" />
-
-		<h5 for="">Email Address</h5>
-		<input type="text" name="email" placeholder="Email Address" value="{{email}}" />
-
-		<h5 for="">Send to Text</h5>
-		<input type="checkbox" name="sendToText" checked="{{sendToText}}" />
-
-		<h5 for="">Mobile Phone Number</h5>
-		<input type="text" name="phone" placeholder="Mobile Phone Number" value="{{phone}}" />
-
-		<h5 for="">Mobile Phone Provider</h5>
-		<select name="provider">
-			<option selected="{{providerIs 0}}" value="0">AT&T</option>
-			<option selected="{{providerIs 1}}" value="1">Sprint</option>
-			<option selected="{{providerIs 2}}" value="2">T-Mobile</option>
-			<option selected="{{providerIs 3}}" value="3">Verizon</option>
-		</select>
-
-		<input type="hidden" name="contactId" value="{{_id}}" />
-
-		<div>
-			<button type="submit">
-				{{#unless _id}}
-					Add Contact
+	<div class="accordion-group">
+		<div class="accordion-heading">
+			<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapse{{_id}}">
+				{{#if name}}
+					{{name}}
 				{{else}}
-					Update Contact
-				{{/unless}}
-			</button>
+					Add New
+				{{/if}}
+			</a>
 		</div>
 
-		{{#if _id}}
-			<div>
-				{{> deleteContact}}
+		<div id="collapse{{_id}}" class="accordion-body collapse">
+			<div class="accordion-inner">
+
+				<form class="{{#unless _id}}new-contact{{/unless}}">
+					<h5 for="">Contact Enabled</h5>
+					<input type="checkbox" name="contactEnabled" checked="{{contactEnabled}}" />
+
+					<h5 for="">Contact Name</h5>
+					<input type="text" name="name" placeholder="Contact Name" value="{{name}}" />
+
+					<h5 for="">Send to Email</h5>
+					<input type="checkbox" name="sendToEmail" checked="{{sendToEmail}}" />
+
+					<h5 for="">Email Address</h5>
+					<input type="text" name="email" placeholder="Email Address" value="{{email}}" />
+
+					<h5 for="">Send to Text</h5>
+					<input type="checkbox" name="sendToText" checked="{{sendToText}}" />
+
+					<h5 for="">Mobile Phone Number</h5>
+					<input type="text" name="phone" placeholder="Mobile Phone Number" value="{{phone}}" />
+
+					<h5 for="">Mobile Phone Provider</h5>
+					<select name="provider">
+						<option selected="{{providerIs 0}}" value="0">AT&T</option>
+						<option selected="{{providerIs 1}}" value="1">Sprint</option>
+						<option selected="{{providerIs 2}}" value="2">T-Mobile</option>
+						<option selected="{{providerIs 3}}" value="3">Verizon</option>
+					</select>
+
+					<input type="hidden" name="contactId" value="{{_id}}" />
+
+					<div>
+						<button type="submit">
+							{{#unless _id}}
+								Add Contact
+							{{else}}
+								Update Contact
+							{{/unless}}
+						</button>
+					</div>
+
+					{{#if _id}}
+						<div>
+							{{> deleteContact}}
+						</div>
+					{{/if}}
+				</form>
 			</div>
-		{{/if}}
-	</form>
+		</div>
+	</div>
 </template>
 
 <template name="deleteContact">
