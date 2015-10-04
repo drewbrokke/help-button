@@ -6,6 +6,7 @@ body {
 .toolbar {
 	align-items: center;
 	background: #EEE;
+	border-bottom: 1px solid black;
 	position: absolute;
 	display: flex;
 	height: 60px;
@@ -51,7 +52,6 @@ form input.warning {
 #settings {
 	border-left: 1px solid black;
 	height: 100%;
-	padding-top: 80px;
 	position: absolute;
 	right: 0;
 	top: 0;
@@ -59,17 +59,30 @@ form input.warning {
 	width: 0;
 }
 
-#settings .accordion-toggle {
-	display: none;
+#messageSettings {
+	padding-top: 60px;
 }
 
-#settings.open .accordion-toggle {
-	display: initial;
+.accordion-toggle {
+	padding: 12px;
+	border-bottom: 1px solid #000;
+	display: block;
+}
+
+.accordion-inner {
+	padding: 12px;
+}
+
+.accordion-toggle:hover, .accordion-toggle:focus {
+	text-decoration: none;
+}
+
+.accordion-heading:hover {
+	background: #EEE;
 }
 
 #settings.open {
 	background: white;
-	padding: 80px 20px 20px;
 	width: 320px;
 }
 
