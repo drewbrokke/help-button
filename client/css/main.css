@@ -224,4 +224,12 @@ form {
 		height: 250px;
 		width: 250px;
 	}
+
+	#theButton:disabled {
+		border-width: 40px;
+	}
+
+	#theButton.holding {
+		border-width: 40px;
+	}
 }
