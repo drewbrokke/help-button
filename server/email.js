@@ -1,14 +1,15 @@
 if (Meteor.isServer) {
 	Meteor.methods({
-		sendEmail: function() {
+		sendEmail: function(to, from, subject, message) {
+			check([to, from, subject, message], [String]);
 
 			this.unblock();
 
 			Email.send({
-				to: 'drewbrokke@gmail.com',
-				from: 'helpbuttondemo@gmail.com',
-				subject: 'help please',
-				text: 'pretty please???'
+				to: to,
+				from: from,
+				subject: subject,
+				text: message
 			});
 		}
 	});
