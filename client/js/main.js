@@ -38,9 +38,6 @@ var sendMail = function() {
 
 	var config = Configs.findOne();
 
-	console.log('config.messageSubject: ', config.messageSubject);
-	console.log('config.messageBody: ', config.messageBody);
-
 	contacts.forEach(function(contact) {
 		if (contact.contactEnabled) {
 			if (contact.email && contact.sendToEmail) {
