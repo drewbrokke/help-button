@@ -232,4 +232,8 @@ form {
 	#theButton.holding {
 		border-width: 40px;
 	}
+
+	.accordion-inner form {
+		width: 295px;
+	}
 }
