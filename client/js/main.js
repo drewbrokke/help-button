@@ -12,10 +12,24 @@ Template.body.helpers({
 
 Template.messageForm.helpers({
 	messageBody: function() {
-		return Configs.findOne().messageBody;
+		var config = Configs.findOne();
+		var messageBody = 'Message body here';
+
+		if (!!config) {
+			messageBody = config.messageBody
+		}
+
+		return messageBody;
 	},
 	messageSubject: function() {
-		return Configs.findOne().messageSubject;
+		var config = Configs.findOne();
+		var messageSubject = 'Message subject here';
+
+		if (!!config) {
+			messageSubject = config.messageSubject
+		}
+
+		return messageSubject;
 	}
 });
 
