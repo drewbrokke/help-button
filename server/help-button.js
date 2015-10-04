@@ -1,4 +1,5 @@
 Contacts = new Mongo.Collection("contacts");
+Configs = new Mongo.Collection("configs");
 
 Meteor.startup(function () {
 	smtp = {
@@ -13,4 +14,8 @@ Meteor.startup(function () {
 
 Meteor.publish("contacts", function () {
 	return Contacts.find({userId: this.userId});
+});
+
+Meteor.publish("configs", function () {
+	return Configs.find({userId: this.userId});
 });

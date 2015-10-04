@@ -1,9 +1,21 @@
 Contacts = new Mongo.Collection("contacts");
+Configs = new Mongo.Collection("configs");
+
 Meteor.subscribe('contacts');
+Meteor.subscribe('configs');
 
 Template.body.helpers({
 	contacts: function () {
 		return Contacts.find({});
+	}
+});
+
+Template.messageForm.helpers({
+	messageBody: function() {
+		return Configs.findOne().messageBody;
+	},
+	messageSubject: function() {
+		return Configs.findOne().messageSubject;
 	}
 });
 
@@ -118,11 +130,19 @@ Template.contactForm.events({
 	}
 });
 
-
 Template.body.events({
 	'click #nav-toggle': function(event) {
 		$(event.currentTarget).toggleClass('active');
 
 		$('#settings').toggleClass('open');
+	},
+	'submit #messageSettings form': function(event) {
+		event.preventDefault();
+
+		var form = event.target;
+		var messageSubject = form.messageSubject.value;
+		var messageBody = form.messageBody.value;
+
+		Meteor.call('updateUserMessageConfig', messageSubject, messageBody);
 	}
 });
