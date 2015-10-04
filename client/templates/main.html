@@ -16,7 +16,7 @@
 		</div>
 
 		{{#if currentUser}}
-			<div id="settings">
+			<div id="settings" class="{{#if noContacts}}open{{/if}}">
 				<div id="messageSettings">
 					<form action="">
 						{{> messageForm}}

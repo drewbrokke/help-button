@@ -7,6 +7,9 @@ Meteor.subscribe('configs');
 Template.body.helpers({
 	contacts: function () {
 		return Contacts.find({});
+	},
+	noContacts: function() {
+		return !Contacts.find().count();
 	}
 });
 
