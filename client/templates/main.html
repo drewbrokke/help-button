@@ -18,7 +18,13 @@
 
 		{{#if currentUser}}
 			<div id="settings">
+				<div id="messageSettings">
+					<form action="">
+						{{> messageForm}}
+					</form>
+				</div>
 				<div id="contacts">
+					<h4>Contacts</h4>
 					<div class="accordion" id="accordion2">
 					{{#each contacts}}
 						{{> contactForm}}
@@ -42,6 +48,16 @@
 
 <template name="button">
 	<button class="btn btn-danger">Help!</button>
+</template>
+
+<template name="messageForm">
+	<h4>Message Settings</h4>
+	<h5 for="">Message Subject</h5>
+	<input type="text" name="subject" placeholder="Message Subject" value="" />
+
+	<h5 for="">Message Body</h5>
+	<textarea name="message">
+	</textarea>
 </template>
 
 <template name="contactForm">
