@@ -178,3 +178,15 @@ form {
 	top: -10px;
 	left: -6px;
 }
+
+@media screen and (max-device-width: 480px) {
+	.jumbotron {
+		padding: 1em 3em;
+	}
+
+	#home button {
+		border-radius: 50%;
+		height: 250px;
+		width: 250px;
+	}
+}
