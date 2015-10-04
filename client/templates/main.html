@@ -23,12 +23,13 @@
 				</div>
 				<div id="contacts">
 					<h4>Contacts</h4>
-					<div class="accordion" id="accordion2">
-					{{#each contacts}}
-						{{> contactForm}}
-					{{/each}}
 
-					{{>contactForm}}
+					<div class="accordion" id="accordion2">
+						{{#each contacts}}
+							{{> contactForm}}
+						{{/each}}
+
+						{{>contactForm}}
 					</div>
 				</div>
 			</div>
@@ -59,12 +60,19 @@
 
 <template name="messageForm">
 	<h4>Message Settings</h4>
-	<h5 for="">Message Subject</h5>
-	<input type="text" name="subject" placeholder="Message Subject" value="" />
+					<div class="form-group col-sm-10">
+						<div class="controls">
+							<label class="control-label">Message Subject</label>
+							<input class="form-control" type="text" name="messageSubject" placeholder="Message Subject" />
+						</div>
+					</div>
 
-	<h5 for="">Message Body</h5>
-	<textarea name="message">
-	</textarea>
+					<div class="form-group col-sm-10">
+						<div class="controls">
+							<label class="control-label">Message Body</label>
+							<textarea class="form-control" rows="3"></textarea>
+						</div>
+					</div>
 </template>
 
 <template name="contactForm">

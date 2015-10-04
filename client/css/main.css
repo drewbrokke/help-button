@@ -31,6 +31,10 @@ form {
 	width: 320px;
 }
 
+#settings h4 {
+	margin-left: 12px;
+}
+
 #user-login {
 	margin-left: 24px;
 }
@@ -66,23 +70,39 @@ form {
 }
 
 .accordion-toggle {
+	background: #FFF;
+	color: #000;
 	display: block;
 	padding: 12px;
+}
+
+.accordion-toggle.collapsed {
+	background: #00796B;
+	color: #FFF;
 }
 
 .accordion-inner {
 	padding: 12px;
 }
 
-.accordion-toggle:hover, .accordion-toggle:focus {
+.accordion-toggle:hover, .accordion-toggle.collapsed:hover {
+	color: #000;
+	background: #EEE;
 	text-decoration: none;
 }
 
-.accordion-heading:hover {
-	background: #EEE;
+.accordion-toggle:focus {
+	color: #000;
+	text-decoration: none;
+}
+
+.accordion-toggle.collapsed:focus {
+	text-decoration: none;
+	color: #FFF;
 }
 
 #settings.open {
+	margin-left: 12px;
 	width: 320px;
 }
 
