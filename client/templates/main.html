@@ -61,19 +61,19 @@
 
 <template name="messageForm">
 	<h4>Message Settings</h4>
-					<div class="form-group col-sm-10">
-						<div class="controls">
-							<label class="control-label">Message Subject</label>
-							<input class="form-control" type="text" name="messageSubject" placeholder="Message Subject" />
-						</div>
-					</div>
+	<div class="form-group col-sm-10">
+		<div class="controls">
+			<label class="control-label">Message Subject</label>
+			<input class="form-control" type="text" name="messageSubject" placeholder="Message Subject" />
+		</div>
+	</div>
 
-					<div class="form-group col-sm-10">
-						<div class="controls">
-							<label class="control-label">Message Body</label>
-							<textarea class="form-control" rows="3"></textarea>
-						</div>
-					</div>
+	<div class="form-group col-sm-10">
+		<div class="controls">
+			<label class="control-label">Message Body</label>
+			<textarea class="form-control" rows="3"></textarea>
+		</div>
+	</div>
 </template>
 
 <template name="contactForm">
@@ -98,21 +98,21 @@
 				<form class="{{#unless _id}}new-contact{{/unless}} form-horizontal">
 					<div class="form-group col-sm-10">
 						<label class="checkbox-inline">
-							<input type="checkbox" name="contactEnabled" value="{{contactEnabled}}">
+							<input type="checkbox" name="contactEnabled" checked="{{contactEnabled}}">
 							Active Contact
 						</label>
 					</div>
 
 					<div class="form-group col-sm-10">
 						<label class="checkbox-inline">
-							<input type="checkbox" name="sendToEmail" value="{{sendToEmail}}">
+							<input type="checkbox" name="sendToEmail" checked="{{sendToEmail}}">
 							Send to Email
 						</label>
 					</div>
 
 					<div class="form-group col-sm-10">
 						<label class="checkbox-inline">
-							<input type="checkbox" name="sendToText" value="{{sendToText}}">
+							<input type="checkbox" name="sendToText" checked="{{sendToText}}">
 							Send to Text
 						</label>
 					</div>
