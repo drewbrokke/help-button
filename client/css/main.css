@@ -1,12 +1,12 @@
 body {
+	background-color: #009688;
 	margin: 0;
 	overflow-x: hidden;
 }
 
 .toolbar {
 	align-items: center;
-	background: #EEE;
-	border-bottom: 1px solid black;
+	background: #00796B;
 	position: absolute;
 	display: flex;
 	height: 60px;
@@ -20,7 +20,15 @@ body {
 }
 
 .content {
+	color: #FFF;
 	padding-top: 84px;
+}
+
+#theButton {
+	background-color: #FF5252;
+	border: 1px solid #FFF;
+	font-size: 4em;
+	font-weight: 100;
 }
 
 form {
@@ -131,4 +139,26 @@ form input.warning {
 
 #nav-toggle.active span:after {
 	transform: rotate(-45deg);
+}
+
+/*Jumbotron*/
+
+.jumbotron {
+	padding: 2em;
+	background-color: inherit;
+}
+
+/*Sign-in*/
+
+#user-login .login-link-text {
+	padding: 1em;
+	border: 1px solid white;
+	border-radius: 4px;
+	color: #FFF;
+	text-decoration: none;
+}
+
+#login-dropdown-list {
+	top: -10px;
+	left: -6px;
 }
