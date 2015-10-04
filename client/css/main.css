@@ -38,6 +38,7 @@ body {
 	border: 1px solid #B6B6B6;
 	font-size: 4em;
 	font-weight: 100;
+	outline: none;
 
 	transition: border 0.5s linear;
 	-webkit-transition: border 0.5s linear;
