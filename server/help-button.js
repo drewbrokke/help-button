@@ -12,6 +12,17 @@ Meteor.startup(function () {
 	process.env.MAIL_URL = 'smtp://' + encodeURIComponent(smtp.username) + ':' + encodeURIComponent(smtp.password) + '@' + encodeURIComponent(smtp.server) + ':' + smtp.port;
 });
 
+Accounts.onCreateUser(function(options, user) {
+	Configs.insert({
+		userId: user._id,
+		messageSubject: 'Message subject here',
+		messageBody: 'Message body here',
+		lastClickDate: 0
+	});
+
+	return user;
+});
+
 Meteor.publish("contacts", function () {
 	return Contacts.find({userId: this.userId});
 });

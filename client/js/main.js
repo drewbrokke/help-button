@@ -29,24 +29,10 @@ Template.button.helpers({
 
 Template.messageForm.helpers({
 	messageBody: function() {
-		var config = Configs.findOne();
-		var messageBody = 'Message body here';
-
-		if (!!config) {
-			messageBody = config.messageBody;
-		}
-
-		return messageBody;
+		return Configs.findOne().messageBody;
 	},
 	messageSubject: function() {
-		var config = Configs.findOne();
-		var messageSubject = 'Message subject here';
-
-		if (!!config) {
-			messageSubject = config.messageSubject;
-		}
-
-		return messageSubject;
+		return Configs.findOne().messageSubject;
 	}
 });
 

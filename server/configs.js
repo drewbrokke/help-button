@@ -1,7 +1,8 @@
 Meteor.methods({
 	updateUserMessageConfig: function(messageSubject, messageBody) {
+		console.log('Configs.find().count(): ', Configs.find().count());
 		Configs.update(
-			this.userId,
+			{userId: this.userId},
 			{
 				$set: {
 					userId: this.userId,
@@ -14,7 +15,7 @@ Meteor.methods({
 	},
 	updateUserTimestamp: function(lastClickDate) {
 		Configs.update(
-			this.userId,
+			{userId: this.userId},
 			{
 				$set: {
 					lastClickDate: lastClickDate
