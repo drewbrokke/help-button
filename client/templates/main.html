@@ -3,28 +3,22 @@
 </head>
 
 <body>
-	<div class="toolbar">
-		<div id="user-login">
-			{{> loginButtons}}
+	<div id="container">
+		<div class="toolbar">
+			<div id="user-login">
+				{{> loginButtons}}
+			</div>
+
+			<div class="title">Help Button</div>
+
+			<div id="nav-toggle">
+				<span></span>
+			</div>
 		</div>
-
-		<div class="title">Help Button</div>
-
-		<div id="nav-toggle">
-			<span></span>
-		</div>
-	</div>
-
-	<div class="content">
 
 		{{#if currentUser}}
-
-			<section id="home">
-				{{> button}}
-			</section>
-
-			<section id="settings">
-				<div id="existingContacts">
+			<div id="settings">
+				<div id="contacts">
 					<div class="accordion" id="accordion2">
 					{{#each contacts}}
 						{{> contactForm}}
@@ -33,8 +27,16 @@
 					{{>contactForm}}
 					</div>
 				</div>
-			</section>
+			</div>
 		{{/if}}
+
+		<div class="content">
+			{{#if currentUser}}
+				<div id="home">
+					{{> button}}
+				</div>
+			{{/if}}
+		</div>
 	</div>
 </body>
 

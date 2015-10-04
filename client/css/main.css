@@ -1,12 +1,16 @@
 body {
 	margin: 0;
+	overflow-x: hidden;
 }
 
 .toolbar {
 	align-items: center;
 	background: #EEE;
+	position: absolute;
 	display: flex;
 	height: 60px;
+	width: 100%;
+	z-index: 10;
 }
 
 .toolbar .title {
@@ -15,7 +19,7 @@ body {
 }
 
 .content {
-	padding: 8px;
+	padding-top: 84px;
 }
 
 form {
@@ -30,6 +34,10 @@ form input.warning {
 	margin-left: 24px;
 }
 
+#container {
+	height: 100%;
+}
+
 #home {
 	text-align: center;
 }
@@ -41,22 +49,29 @@ form input.warning {
 }
 
 #settings {
-	border-top: 1px solid black;
 	border-left: 1px solid black;
 	height: 100%;
-	padding: 20px;
+	padding-top: 80px;
 	position: absolute;
-	right: -1000px;
-	top: 60px;
+	right: 0;
+	top: 0;
 	transition: all 250ms ease-in-out;
-	width: 320px;
+	width: 0;
+}
+
+#settings .accordion-toggle {
+	display: none;
+}
+
+#settings.open .accordion-toggle {
+	display: initial;
 }
 
 #settings.open {
 	background: white;
-	right: 0;
+	padding: 80px 20px 20px;
+	width: 320px;
 }
-
 
 /*---------------- Nav Toggle ----------------*/
 
