@@ -6,17 +6,13 @@ body {
 
 .toolbar {
 	align-items: center;
+	justify-content: space-between;
 	background: #00796B;
 	position: absolute;
 	display: flex;
 	height: 60px;
 	width: 100%;
 	z-index: 10;
-}
-
-.toolbar .title {
-	flex-grow: 1;
-	text-align: center;
 }
 
 .content {
@@ -96,6 +92,10 @@ form input.warning {
 
 /*---------------- Nav Toggle ----------------*/
 
+.signed-out #nav-toggle {
+	display: none;
+}
+
 #nav-toggle {
 	cursor: pointer;
 	margin-right: 24px;
@@ -107,7 +107,7 @@ form input.warning {
 	border-radius: 1px;
 	height: 5px;
 	width: 35px;
-	background: black;
+	background: #FFF;
 	position: absolute;
 	display: block;
 	content: '';
@@ -144,7 +144,7 @@ form input.warning {
 /*Jumbotron*/
 
 .jumbotron {
-	padding: 2em;
+	padding: 5em;
 	background-color: inherit;
 }
 
