@@ -1,16 +1,28 @@
 if (Meteor.isServer) {
 	Meteor.methods({
 		sendEmail: function(to, from, subject, message) {
-			check([to, from, subject, message], [String]);
+			var time = new Date();
+			var config = Configs.findOne({userId: Meteor.userId()});
 
-			this.unblock();
+			var lastClickDate = config.lastClickDate;
 
-			Email.send({
-				to: to,
-				from: from,
-				subject: subject,
-				text: message
-			});
+			//  30 Minutes delay ms * sec * min
+			var timeDelay = 1000 * 60 * 5;
+
+			if (!lastClickDate || ((time - lastClickDate) > timeDelay)) {
+				check([to, from, subject, message], [String]);
+
+				this.unblock();
+
+				Email.send({
+					to: to,
+					from: from,
+					subject: subject,
+					text: message
+				});
+
+				Meteor.call('updateUserTimestamp', time);
+			}
 		}
 	});
 }

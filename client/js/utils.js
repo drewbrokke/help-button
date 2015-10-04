@@ -7,8 +7,8 @@ var CARRIERS = [
 	"txt.att.net", // att
 	"messaging.sprintpcs.com", // sprint
 	"tmomail.net", // tMobile
-	"vtext.com.nextel.com" // verizon
-]
+	"vtext.com" // verizon
+];
 
 var utilityFns = {
 	createPhoneEmail: function(phoneNumber, provider) {

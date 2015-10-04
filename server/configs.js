@@ -12,12 +12,12 @@ Meteor.methods({
 			{ upsert: true }
 		);
 	},
-	updateUserTimestamp: function(timestamp) {
+	updateUserTimestamp: function(lastClickDate) {
 		Configs.update(
 			this.userId,
 			{
 				$set: {
-					timestamp: timestamp
+					lastClickDate: lastClickDate
 				}
 			},
 			{ upsert: true }

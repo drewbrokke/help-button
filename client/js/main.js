@@ -10,6 +10,19 @@ Template.body.helpers({
 	}
 });
 
+Template.button.helpers({
+	enabled: function () {
+		var lastClickDate = Configs.findOne().lastClickDate;
+
+		var time = new Date();
+
+		//  30 Minutes delay ms * sec * min
+		var timeDelay = 1000 * 60 * 5;
+
+		return !(!lastClickDate || ((time - lastClickDate) > timeDelay));
+	}
+});
+
 Template.messageForm.helpers({
 	messageBody: function() {
 		var config = Configs.findOne();
@@ -50,6 +63,8 @@ var sendMail = function() {
 				Meteor.call('sendEmail', phoneAddress, 'helpbuttondemo@gmail.com', config.messageSubject, config.messageBody);
 			}
 		}
+
+		$('#theButton').attr('disabled', true);
 	});
 };
 
