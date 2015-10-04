@@ -49,13 +49,21 @@
 </body>
 
 <template name="button">
-	<button disabled="{{enabled}}" id="theButton" class="btn btn-danger">
-		{{#unless enabled}}
-			Help!
-		{{else}}
-			Sent!
-		{{/unless}}
-	</button>
+	{{#with timer}}
+		<button disabled="{{disabled}}" id="theButton" class="btn btn-danger">
+			{{#unless disabled}}
+				Help!
+			{{else}}
+				Sent!
+			{{/unless}}
+		</button>
+
+		{{#if disabled}}
+			<div>
+				Must wait {{timeRemaining}} more minutes
+			</div>
+		{{/if}}
+	{{/with}}
 </template>
 
 <template name="jumboText">

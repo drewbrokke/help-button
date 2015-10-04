@@ -11,15 +11,19 @@ Template.body.helpers({
 });
 
 Template.button.helpers({
-	enabled: function () {
+	timer: function () {
 		var lastClickDate = Configs.findOne().lastClickDate;
 
 		var time = new Date();
 
 		//  30 Minutes delay ms * sec * min
 		var timeDelay = 1000 * 60 * 5;
+		var timeRemaining = (time - lastClickDate);
 
-		return !(!lastClickDate || ((time - lastClickDate) > timeDelay));
+		return {
+			disabled: !(!lastClickDate || (timeRemaining > timeDelay)),
+			timeRemaining: 6 - Math.ceil(timeRemaining / 60000)
+		};
 	}
 });
 
@@ -29,7 +33,7 @@ Template.messageForm.helpers({
 		var messageBody = 'Message body here';
 
 		if (!!config) {
-			messageBody = config.messageBody
+			messageBody = config.messageBody;
 		}
 
 		return messageBody;
@@ -39,7 +43,7 @@ Template.messageForm.helpers({
 		var messageSubject = 'Message subject here';
 
 		if (!!config) {
-			messageSubject = config.messageSubject
+			messageSubject = config.messageSubject;
 		}
 
 		return messageSubject;
