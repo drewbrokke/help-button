@@ -4,6 +4,18 @@ body {
 	overflow-x: hidden;
 }
 
+.btn-primary {
+	background-color: #00796B;
+	border-color: #FFF;
+	color: #FFF;
+}
+
+.btn-primary:hover {
+	background-color: #FFF;
+	border-color: #00796B;
+	color: #00796B;
+}
+
 .toolbar {
 	align-items: center;
 	justify-content: space-between;
