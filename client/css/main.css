@@ -26,6 +26,18 @@ body {
 	border: 1px solid #B6B6B6;
 	font-size: 4em;
 	font-weight: 100;
+
+	transition: border 0.5s linear;
+	-webkit-transition: border 0.5s linear;
+	-moz-transition: border 0.5s linear;
+}
+
+#theButton.holding {
+	border-width: 80px;
+
+	transition: border 3s linear;
+	-webkit-transition: border 3s linear;
+	-moz-transition: border 3s linear;
 }
 
 form {

@@ -7,24 +7,67 @@ Template.body.helpers({
 	}
 });
 
-Template.button.events({
-	'click button': function () {
-		var contacts = Contacts.find({});
+var sendMail = function() {
+	var contacts = Contacts.find({});
 
-		contacts.forEach(function(contact) {
-			if (contact.contactEnabled) {
-				if (contact.email && contact.sendToEmail) {
-					Meteor.call('sendEmail', contact.email, 'helpbuttondemo@gmail.com', 'help please', 'This is the new stuff');
-				}
-
-				if (contact.phone && contact.sendToText) {
-					var phoneAddress = Utils.createPhoneEmail(contact.phone, contact.provider);
-
-					Meteor.call('sendEmail', phoneAddress, 'helpbuttondemo@gmail.com', 'help please', 'This is the new stuff');
-				}
+	contacts.forEach(function(contact) {
+		if (contact.contactEnabled) {
+			if (contact.email && contact.sendToEmail) {
+				Meteor.call('sendEmail', contact.email, 'helpbuttondemo@gmail.com', 'help please', 'This is the new stuff');
 			}
-		});
-	}
+
+			if (contact.phone && contact.sendToText) {
+				var phoneAddress = Utils.createPhoneEmail(contact.phone, contact.provider);
+
+				Meteor.call('sendEmail', phoneAddress, 'helpbuttondemo@gmail.com', 'help please', 'This is the new stuff');
+			}
+		}
+	});
+};
+
+var counter;
+var timeout;
+
+var holdButtonClick = function(event) {
+	timeout = setTimeout(sendMail, 3000);
+
+	var i = 3;
+
+	$('#theButton').text(i);
+
+	counter = setInterval(function() {
+		i -= 1;
+
+		if (i === 0) {
+				i = 'Sent';
+
+				clearTimeout(counter);
+		}
+
+		$('#theButton').text(i);
+	}, 1000);
+
+	$(event.currentTarget).addClass('holding');
+};
+
+Template.button.events({
+	'mousedown button': holdButtonClick,
+	'touchstart button': holdButtonClick
+});
+
+var cancelButtonClick = function(event) {
+	clearTimeout(timeout);
+	clearTimeout(counter);
+
+	$('#theButton').text('Help!');
+
+	$(event.currentTarget).removeClass('holding');
+};
+
+Template.button.events({
+	'mouseup button': cancelButtonClick,
+	'mouseout button': cancelButtonClick,
+	'touchend button': cancelButtonClick
 });
 
 Accounts.ui.config({
