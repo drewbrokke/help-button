@@ -22,17 +22,13 @@ body {
 
 #theButton {
 	background-color: #FF5252;
-	border: 1px solid #FFF;
+	border: 1px solid #B6B6B6;
 	font-size: 4em;
 	font-weight: 100;
 }
 
 form {
 	width: 320px;
-}
-
-form input.warning {
-	border: 1px solid red;
 }
 
 #user-login {
@@ -54,7 +50,7 @@ form input.warning {
 }
 
 #settings {
-	border-left: 1px solid black;
+	background: #00796B;
 	height: 100%;
 	overflow-y: scroll;
 	overflow-x: hidden;
@@ -70,9 +66,8 @@ form input.warning {
 }
 
 .accordion-toggle {
-	padding: 12px;
-	border-bottom: 1px solid #000;
 	display: block;
+	padding: 12px;
 }
 
 .accordion-inner {
@@ -88,7 +83,6 @@ form input.warning {
 }
 
 #settings.open {
-	background: white;
 	width: 320px;
 }
 
